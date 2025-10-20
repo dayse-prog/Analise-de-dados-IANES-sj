@@ -49,7 +49,7 @@ with Aba1:
                     'Peças Inteiras':[nova_Pecas_Inteiras],
                     'Peças com defeitos':[nova_Pecas_com_defeitos]
                     }
-            
+            x = pd.DataFrame(novo)
             DF = pd.concat([df, novo], ignore_index=True)
             st.success('Novo registro adicionado!')
             st.dataframe(DF)
@@ -109,5 +109,6 @@ with Aba2:
             st.error(f'Ocorreu um erro ao tentar gerar os gráficos: {e}')
 
     #Aba para pesquisar por dados  ?       
+
 
 
