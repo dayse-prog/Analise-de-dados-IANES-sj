@@ -50,7 +50,7 @@ with Aba1:
                     'Peças com defeitos':[nova_Pecas_com_defeitos]
                     }
             x = pd.DataFrame(novo)
-            DF = pd.concat([df, novo], ignore_index=True)
+            DF = pd.concat([df, x], ignore_index=True)
             st.success('Novo registro adicionado!')
             st.dataframe(DF)
             DF.to_csv('C:/Users/dayse/Desktop/Tec. Desenvolvimento de Sistemas/WPy64-31241/Programação de apps/Analise_de_dados.csv', index=False)
@@ -73,42 +73,24 @@ with Aba2:
 
             #Gráficos por maquinas
             maquinas = df['Maquina'].unique()
+            
             for maq in maquinas:
                 dados_maq = df[df['Maquina'] == maq]
                 if dados_maq.empty:
                     st.warning(f'Sem dados para {maq}')
-                    continue
                     #Gráficos produção diaria
-                    fig1, ax1 = plt.subplots()
-                    ax1.plot(dados_maq['Data de registro'], dados_maq['Peças produzidas'], marker = 'o',
-                            linestyle = '-', label = 'Peças produzidas')
-                    ax1.set_title(f'Produção - {maq}')
-                    ax1.set_xlabel('Data de registro')
-                    ax1.set_ylabel('Peças produzidas')
-                    ax1.grid(True)
-                    ax1.legend()
-                    st.pyplot(fig1)
-
-                    #Gráfico de barras peças inteiras e defeituosas
-                    fig2, ax2 = plt.subplots()
-                    largura_barra = 0.25
-                    datas = dados_maq['Data de regustro'].df.strftime('%d%m')
-                    ax2.bar(dados_maq['Data de registro']+ pd.Timedelta(days = 0.15),
-                            dados_maq['Peças Inteiras'], width = largura_barra, label = 'Peças Inteiras', color = 'tab:green')
-                    ax2.bar(dados_maq['Data de registro'] + pd.Timedelta(days=0.15),
-                        dados_maq['Peças com defeitos'], width=largura_barra, label = 'Peças com defeitos', color='tab:red')
-
-                    ax2.set_title(f'Peças Inteiras x Defeituosas - {maq}')
-                    ax2.set_xlabel('Data de registro')
-                    ax2.set_ylabel('Quantidade')
-                    ax2.legend()
-                    ax2.grid(True, axis='y')
-                    st.pyplot(fig2)
+                
+                fig1, ax1 = plt.subplots()
+                ax1.plot(dados_maq['Data de registro'], dados_maq['Peças produzidas'], marker = 'o',
+                        linestyle = '-', label = 'Peças produzidas')
+                ax1.set_title(f'Produção - {maq}')
+                ax1.set_xlabel('Data de registro')
+                ax1.set_ylabel('Peças produzidas')
+                ax1.grid(True)
+                ax1.legend()
+                st.pyplot(fig1)
 
         except Exception as e:
             st.error(f'Ocorreu um erro ao tentar gerar os gráficos: {e}')
-
-    #Aba para pesquisar por dados  ?       
-
-
+       
 
