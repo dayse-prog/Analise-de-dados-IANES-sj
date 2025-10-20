@@ -80,17 +80,18 @@ with Aba2:
                     st.warning(f'Sem dados para {maq}')
                     #Gráficos produção diaria
                 
-                fig1, ax1 = plt.subplots()
-                ax1.plot(dados_maq['Data de registro'], dados_maq['Peças produzidas'], marker = 'o',
-                        linestyle = '-', label = 'Peças produzidas')
-                ax1.set_title(f'Produção - {maq}')
-                ax1.set_xlabel('Data de registro')
-                ax1.set_ylabel('Peças produzidas')
-                ax1.grid(True)
-                ax1.legend()
-                st.pyplot(fig1)
+                    fig1, ax1 = plt.subplots()
+                    ax1.plot(dados_maq['Data de registro'], dados_maq['Peças produzidas'], marker = 'o',
+                            linestyle = '-', label = 'Peças produzidas')
+                    ax1.set_title(f'Produção - {maq}')
+                    ax1.set_xlabel('Data de registro')
+                    ax1.set_ylabel('Peças produzidas')
+                    ax1.grid(True)
+                    ax1.legend()
+                    st.pyplot(fig1)
 
         except Exception as e:
             st.error(f'Ocorreu um erro ao tentar gerar os gráficos: {e}')
        
+
 
