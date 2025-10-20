@@ -50,7 +50,7 @@ with Aba1:
                     'Peças com defeitos':[nova_Pecas_com_defeitos]
                     }
             
-            DF = pd.concat([df, x], ignore_index=True)
+            DF = pd.concat([df, novo], ignore_index=True)
             st.success('Novo registro adicionado!')
             st.dataframe(DF)
             DF.to_csv('C:/Users/dayse/Desktop/Tec. Desenvolvimento de Sistemas/WPy64-31241/Programação de apps/Analise_de_dados.csv', index=False)
@@ -109,4 +109,5 @@ with Aba2:
             st.error(f'Ocorreu um erro ao tentar gerar os gráficos: {e}')
 
     #Aba para pesquisar por dados  ?       
+
 
